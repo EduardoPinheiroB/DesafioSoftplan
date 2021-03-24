@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using Desafio.Infra.Adapters.Interfaces;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Net;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Desafio.Infra.Adapters
 {
-    public class ApiBuscarTaxaJuroAdapter
+    public class ApiBuscarTaxaJuroAdapter : IApiBuscarTaxaJuroAdapter
     {
         public async Task<Result<decimal>> BuscarTaxaJuro()
         {

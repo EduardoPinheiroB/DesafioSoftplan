@@ -1,16 +1,16 @@
 ﻿using CSharpFunctionalExtensions;
 using Desafio.Domain.Gateways;
 using Desafio.Domain.ValueObjects;
-using Desafio.Infra.Adapters;
+using Desafio.Infra.Adapters.Interfaces;
 using System.Threading.Tasks;
 
 namespace Desafio.Infra.DataProvider
 {
     public class JuroDataProvider : IJuroGateway
     {
-        private readonly ApiBuscarTaxaJuroAdapter apiBuscarTaxaJuroAdapter;
+        private readonly IApiBuscarTaxaJuroAdapter apiBuscarTaxaJuroAdapter;
 
-        public JuroDataProvider(ApiBuscarTaxaJuroAdapter apiBuscarTaxaJuroAdapter)
+        public JuroDataProvider(IApiBuscarTaxaJuroAdapter apiBuscarTaxaJuroAdapter)
         {
             this.apiBuscarTaxaJuroAdapter = apiBuscarTaxaJuroAdapter;
         }

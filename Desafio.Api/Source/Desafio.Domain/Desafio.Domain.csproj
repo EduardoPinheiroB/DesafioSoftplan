@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.15.1" />
     <PackageReference Include="DecimalMath.DecimalEx" Version="1.0.2" />
+    <PackageReference Include="Flunt" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
 

@@ -31,7 +31,7 @@ namespace Desafio.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult taxaJuro()
+        public IActionResult TaxaJuro()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Desafio.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> calculajurosAsync(
+        public async Task<IActionResult> CalculajurosAsync(
             [FromQuery(Name = "valor_inicial")][BindRequired] decimal valorInicial,
             [FromQuery(Name = "tempo")][BindRequired] int tempo)
         {
@@ -91,7 +91,7 @@ namespace Desafio.Api.Controllers
 
         [HttpGet("showmethecode")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult showmethecode()
+        public IActionResult Showmethecode()
         {
             return Ok("https://github.com/EduardoPinheiroB/DesafioSoftplan");
         }

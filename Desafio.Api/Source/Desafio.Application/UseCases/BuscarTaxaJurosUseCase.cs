@@ -6,7 +6,7 @@ using CSharpFunctionalExtensions;
 
 namespace Desafio.Application.UseCases
 {
-    class BuscarTaxaJurosUseCase : IBuscarTaxaJurosUseCase
+    public class BuscarTaxaJurosUseCase : IBuscarTaxaJurosUseCase
     {
         private readonly ILogger<BuscarTaxaJurosUseCase> logger;
         private readonly IJuroGateway juroGateway;

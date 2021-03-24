@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using DecimalMath;
+using Flunt.Notifications;
 
 namespace Desafio.Domain.ValueObjects
 {
-    public class Juro
+    public class Juro : Notifiable<Notification>
     {
         public Taxa Taxa { get; private set; }
         public int Tempo { get; private set; }
@@ -17,11 +19,18 @@ namespace Desafio.Domain.ValueObjects
             Taxa = new Taxa(taxa);
             Tempo = tempo;
             ValorInicial = valorInicial;
-        }
 
-        public Juro BuscarTaxaJuro()
-        {
-            return new Juro { Taxa = new Taxa(0.1M) };
+            if(valorInicial <= 0)
+                AddNotification("ValorInicial", "ValorInicial tem que ser maior que zero");
+
+            if (!Taxa.IsValid)
+                AddNotification(Taxa.Notifications.First());
+
+            if (Tempo <= 0)
+                AddNotification("Tempo", "Tempo tem que ser maior que zero");
+
+            if (Tempo > 100)
+                AddNotification("Tempo", "Tempo tem que ser menor que cem");
         }
 
         public Juro CalcularTaxaJuros()
