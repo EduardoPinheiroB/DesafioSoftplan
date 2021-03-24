@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CSharpFunctionalExtensions" Version="2.15.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Desafio.Infra\Desafio.Infra.csproj" />
+    <ProjectReference Include="..\Desafio.Application\Desafio.Application.csproj" />
+  </ItemGroup>
+
+
+</Project>
