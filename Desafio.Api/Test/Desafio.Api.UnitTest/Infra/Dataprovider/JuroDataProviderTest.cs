@@ -61,5 +61,21 @@ namespace Desafio.Api.UnitTest.Infra.Dataprovider
             Assert.True(resultado.Result.IsFailure);
             Assert.Equal("Teste Erro", resultado.Result.Error);
         }
+
+        [Fact]
+        public void ConsultarApiTaxaJuro_FluxoTaxaInvalida_ResultFailure()
+        {
+            //Arrange
+            apiBuscarTaxaJuroAdapterMock.Setup(f => f.BuscarTaxaJuro())
+                .ReturnsAsync(Result.Success<decimal>(-1M));
+
+            //Act
+            var resultado = juroDataProvider.ConsultarApiTaxaJuro();
+            resultado.Wait();
+
+            //Assert
+            Assert.True(resultado.Result.IsFailure);
+            Assert.NotEmpty(resultado.Result.Error);
+        }
     }
 }

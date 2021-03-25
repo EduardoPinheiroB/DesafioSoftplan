@@ -57,5 +57,22 @@ namespace Desafio.Api.UnitTest.Application.UseCases
             Assert.True(resultado.Result.IsFailure);
             Assert.Equal("Teste Erro", resultado.Result.Error);
         }
+
+
+        [Fact]
+        public void CalcularTaxaJuros_FluxoJuroInvalido_ResultFailure()
+        {
+            //Arrange
+            juroGatewayMock.Setup(f => f.ConsultarApiTaxaJuro())
+                .ReturnsAsync(Result.Success<Taxa>(new Taxa(-1M)));
+
+            //Act
+            var resultado = calcularTaxaJurosUseCase.CalcularTaxaJuros(-1, -1);
+            resultado.Wait();
+
+            //Assert
+            Assert.True(resultado.Result.IsFailure);
+            Assert.NotEmpty(resultado.Result.Error);
+        }
     }
 }

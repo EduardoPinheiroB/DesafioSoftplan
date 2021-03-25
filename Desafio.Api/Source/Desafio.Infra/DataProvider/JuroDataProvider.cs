@@ -23,9 +23,15 @@ namespace Desafio.Infra.DataProvider
         public async Task<Result<Taxa>> ConsultarApiTaxaJuro()
         {
             var valorTaxa = await apiBuscarTaxaJuroAdapter.BuscarTaxaJuro();
-
+            Taxa TaxaResultado = null;
             if (valorTaxa.IsSuccess)
+            {
+                TaxaResultado = new Taxa(valorTaxa.Value);
+
+                if (!TaxaResultado.IsValid)
+                    return Result.Failure<Taxa>(TaxaResultado.Notifications.TryFirst().Value.Message);
                 return Result.Success<Taxa>(new Taxa(valorTaxa.Value));
+            }
             else
                 return Result.Failure<Taxa>(valorTaxa.Error);
         }

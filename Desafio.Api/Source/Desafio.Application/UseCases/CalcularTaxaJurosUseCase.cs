@@ -27,6 +27,10 @@ namespace Desafio.Application.UseCases
             if (taxa.IsSuccess)
             {
                 var juro = new Juro(taxa.Value.Valor, tempo, valorInicial);
+
+                if(!juro.IsValid)
+                    return Result.Failure<decimal>(juro.Notifications.TryFirst().Value.Message);
+
                 juro.CalcularTaxaJuros();
 
                 return Result.Success<decimal>(juro.ValorFinal);
